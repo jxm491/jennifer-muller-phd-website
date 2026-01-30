@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jennifer J. Muller, PhD - Software Engineer & Biomedical Researcher</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0e15;
+            --bg-secondary: #151b26;
+            --bg-tertiary: #1f2937;
+            --accent-primary: #00e5cc;
+            --accent-secondary: #7c3aed;
+            --accent-tertiary: #ec4899;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #64748b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        /* Animated gradient background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(124, 58, 237, 0.15), transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(0, 229, 204, 0.1), transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.08), transparent 60%);
+            z-index: -1;
+            animation: gradientShift 20s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Header */
+        header {
+            padding: 3rem 0 4rem;
+            position: relative;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .name-section {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+        
+        .tagline {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--accent-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease 0.3s backwards;
+        }
+        
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+        
+        .contact-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border: 1px solid var(--bg-tertiary);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .contact-links a:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 229, 204, 0.2);
+        }
+        
+        .resume-download {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border: none !important;
+            color: var(--bg-primary) !important;
+            font-weight: 600;
+        }
+        
+        .resume-download:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 229, 204, 0.4);
+            color: var(--bg-primary) !important;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Section Styles */
+        section {
+            margin-bottom: 5rem;
+            animation: fadeIn 1s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .section-number {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+        
+        h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 2px;
+        }
+        
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-primary);
+            border: 3px solid var(--bg-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--bg-secondary);
+        }
+        
+        .job-header {
+            margin-bottom: 0.8rem;
+        }
+        
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+        
+        .company {
+            font-size: 1.1rem;
+            color: var(--accent-primary);
+            margin-bottom: 0.3rem;
+        }
+        
+        .job-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .job-description {
+            color: var(--text-secondary);
+            margin-top: 0.8rem;
+            line-height: 1.8;
+        }
+        
+        /* Publications Grid */
+        .publications-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            gap: 2.5rem;
+        }
+        
+        .project-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--bg-tertiary);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(0, 229, 204, 0.2);
+            border-color: var(--accent-primary);
+        }
+        
+        .project-card:hover::before {
+            opacity: 1;
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            background: var(--bg-tertiary);
+            position: relative;
+        }
+        
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, transparent 0%, rgba(10, 14, 21, 0.7) 100%);
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+        
+        .project-content {
+            padding: 2rem;
+        }
+        
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+        
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-tag {
+            background: var(--bg-tertiary);
+            color: var(--accent-primary);
+            padding: 0.4rem 0.9rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 229, 204, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .project-tag:hover {
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            border-color: var(--accent-primary);
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .project-links a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .project-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-primary);
+            transition: width 0.3s ease;
+        }
+        
+        .project-links a:hover::after {
+            width: 100%;
+        }
+        
+        .publications-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .publication-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 1.8rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .publication-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .publication-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateX(8px);
+            box-shadow: 0 8px 24px rgba(0, 229, 204, 0.15);
+        }
+        
+        .publication-card:hover::before {
+            opacity: 1;
+        }
+        
+        .pub-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.6rem;
+            line-height: 1.5;
+        }
+        
+        .pub-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+        }
+        
+        .pub-link {
+            display: inline-block;
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .pub-link:hover {
+            color: var(--accent-secondary);
+            text-decoration: underline;
+        }
+        
+        /* Skills Grid */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            background: var(--bg-secondary);
+            border: 1px solid var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            border-color: var(--accent-secondary);
+            box-shadow: 0 8px 24px rgba(124, 58, 237, 0.15);
+        }
+        
+        .skill-category h3 {
+            font-size: 1.1rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        
+        .skill-tag {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            transform: scale(1.05);
+        }
+        
+        /* Education */
+        .education-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .degree {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .institution {
+            font-size: 1.1rem;
+            color: var(--accent-primary);
+            margin-bottom: 0.3rem;
+        }
+        
+        .edu-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 5rem;
+            border-top: 1px solid var(--bg-tertiary);
+        }
+        
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .timeline {
+                padding-left: 1.5rem;
+            }
+            
+            .timeline-item {
+                padding-left: 1.5rem;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="name-section">
+                    <h1>Jennifer J. Muller</h1>
+                    <p class="subtitle">PhD in Bioengineering</p>
+                    <p class="tagline">Software Engineer · Biomedical Researcher</p>
+                    <div class="contact-links">
+                        <a href="https://www.linkedin.com/in/jennifer-muller-phd/" target="_blank">
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/jennie-muller" target="_blank">
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.researchgate.net/profile/Jennifer-Muller-6" target="_blank">
+                            <span>ResearchGate</span>
+                        </a>
+                        <a href="./Jennifer_Muller_Resume.docx" download class="resume-download">
+                            <span>Download Resume</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Experience Section -->
+            <section id="experience">
+                <div class="section-header">
+                    <span class="section-number">01.</span>
+                    <h2>Experience</h2>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="job-header">
+                            <h3 class="job-title">Software Developer, Analyst</h3>
+                            <div class="company">SMBC Nikko Securities America, Inc.</div>
+                            <div class="job-meta">
+                                <span>Mar 2025 - Present</span>
+                                <span>·</span>
+                                <span>Full-time</span>
+                                <span>·</span>
+                                <span>New York City Metropolitan Area</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="job-header">
+                            <h3 class="job-title">Associate Software Engineer</h3>
+                            <div class="company">Syncro Medical</div>
+                            <div class="job-meta">
+                                <span>Nov 2022 - Mar 2025</span>
+                                <span>·</span>
+                                <span>2 yrs 5 mos</span>
+                                <span>·</span>
+                                <span>Langhorne, Pennsylvania (Hybrid)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="job-header">
+                            <h3 class="job-title">Research Assistant</h3>
+                            <div class="company">Thomas Jefferson University Hospitals</div>
+                            <div class="job-meta">
+                                <span>Feb 2017 - Nov 2022</span>
+                                <span>·</span>
+                                <span>5 yrs 10 mos</span>
+                                <span>·</span>
+                                <span>Philadelphia, PA</span>
+                            </div>
+                        </div>
+                        <p class="job-description">
+                            Department of Neurosurgery. Imaging specialist for neuromodulation, focusing on advanced neuroimaging techniques and deep brain stimulation applications.
+                        </p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="job-header">
+                            <h3 class="job-title">Research Technician</h3>
+                            <div class="company">The Children's Hospital of Philadelphia</div>
+                            <div class="job-meta">
+                                <span>Aug 2015 - Nov 2016</span>
+                                <span>·</span>
+                                <span>1 yr 4 mos</span>
+                            </div>
+                        </div>
+                        <p class="job-description">
+                            Applied preclinical and clinical neuroimaging and analysis techniques to delineate human brain development and identify clinical biomarkers.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects">
+                <div class="section-header">
+                    <span class="section-number">02.</span>
+                    <h2>Research Projects</h2>
+                </div>
+                <div class="projects-grid">
+                    <!-- Project cards will be added here -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://via.placeholder.com/600x400/1f2937/00e5cc?text=Tractography+Visualization" alt="Brain tractography visualization">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Probabilistic Tractography for Deep Brain Stimulation</h3>
+                            <p class="project-description">
+                                Developed novel methods for prospective targeting in deep brain stimulation using probabilistic tractography to distinguish motor and sensory thalamus regions, improving surgical outcomes for essential tremor patients.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Neuroimaging</span>
+                                <span class="project-tag">Machine Learning</span>
+                                <span class="project-tag">Clinical Application</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://thejns.org/view/journals/j-neurosurg/136/5/article-p1371.xml" target="_blank">Publication →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://via.placeholder.com/600x400/1f2937/7c3aed?text=TBI+Classification" alt="TBI classification">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Machine Learning for Traumatic Brain Injury Classification</h3>
+                            <p class="project-description">
+                                Applied hybrid diffusion imaging and machine learning techniques to classify chronic traumatic brain injury, identifying altered white matter tract integrity and associations with cognitive dysfunction.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">ML/AI</span>
+                                <span class="project-tag">Diffusion Imaging</span>
+                                <span class="project-tag">Biomarkers</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://www.frontiersin.org/articles/10.3389/fnins.2023.1222293/full" target="_blank">Publication →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://via.placeholder.com/600x400/1f2937/ec4899?text=Brain+Development" alt="Brain development imaging">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Cortical Connectivity in Brain Development</h3>
+                            <p class="project-description">
+                                Created a novel maturational index sensitive to connectivity of specific cortical regions in normal and pathological human brain development using advanced neuroimaging techniques.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Pediatric Neurology</span>
+                                <span class="project-tag">MRI Analysis</span>
+                                <span class="project-tag">Development</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" target="_blank">ISMRM 2016 →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Publications Section -->
+            <section id="publications">
+                <div class="section-header">
+                    <span class="section-number">03.</span>
+                    <h2>Selected Publications</h2>
+                </div>
+                <div class="publications-grid">
+                    <div class="publication-card">
+                        <h3 class="pub-title">Machine learning-based classification of chronic traumatic brain injury using hybrid diffusion imaging</h3>
+                        <div class="pub-meta">Frontiers in Neuroscience · August 23, 2023</div>
+                        <a href="https://www.frontiersin.org/articles/10.3389/fnins.2023.1222293/full" class="pub-link" target="_blank">View Publication →</a>
+                    </div>
+
+                    <div class="publication-card">
+                        <h3 class="pub-title">Use of probabilistic tractography to provide reliable distinction of the motor and sensory thalamus for prospective targeting during asleep deep brain stimulation</h3>
+                        <div class="pub-meta">Journal of Neurosurgery · October 8, 2021</div>
+                        <a href="https://thejns.org/view/journals/j-neurosurg/aop/article-10.3171-2021.5.JNS21656/article-10.3171-2021.5.JNS21656.xml" class="pub-link" target="_blank">View Publication →</a>
+                    </div>
+
+                    <div class="publication-card">
+                        <h3 class="pub-title">Hybrid diffusion imaging reveals altered white matter tract integrity and associations with symptoms and cognitive dysfunction in chronic traumatic brain injury</h3>
+                        <div class="pub-meta">Neuroimage: Clinical · April 21, 2021</div>
+                        <a href="https://www.sciencedirect.com/science/article/pii/S2213158221001182" class="pub-link" target="_blank">View Publication →</a>
+                    </div>
+
+                    <div class="publication-card">
+                        <h3 class="pub-title">Feasibility of Diffusion and Probabilistic White Matter Analysis in Patients Implanted with a Deep Brain Stimulator</h3>
+                        <div class="pub-meta">NeuroImage: Clinical · December 14, 2019</div>
+                        <a href="https://www.sciencedirect.com/science/article/pii/S2213158219304516" class="pub-link" target="_blank">View Publication →</a>
+                    </div>
+
+                    <div class="publication-card">
+                        <h3 class="pub-title">Clinically applicable delineation of the pallidal sensorimotor region in patients with advanced Parkinson's disease: study of probabilistic and deterministic tractography</h3>
+                        <div class="pub-meta">Journal of Neurosurgery · December 14, 2018</div>
+                        <a href="https://thejns.org/view/journals/j-neurosurg/132/2/article-p400.xml" class="pub-link" target="_blank">View Publication →</a>
+                    </div>
+
+                    <div class="publication-card">
+                        <h3 class="pub-title">Global and regional cortical connectivity maturation index of developmental human brain with quantification of short-range</h3>
+                        <div class="pub-meta">International Society for Magnetic Resonance in Medicine (ISMRM), Singapore · April 1, 2016</div>
+                        <p class="job-description" style="margin-top: 0.8rem; font-size: 0.95rem;">
+                            Developed a novel maturational index sensitive to connectivity of specific cortical regions in normal and pathological human brain development.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills">
+                <div class="section-header">
+                    <span class="section-number">04.</span>
+                    <h2>Technical Skills</h2>
+                </div>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Software Development</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Machine Learning</span>
+                            <span class="skill-tag">Data Analysis</span>
+                            <span class="skill-tag">Software Engineering</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Neuroimaging</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MRI Analysis</span>
+                            <span class="skill-tag">Diffusion Imaging</span>
+                            <span class="skill-tag">Tractography</span>
+                            <span class="skill-tag">Image Processing</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Research & Analysis</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Biomarker Development</span>
+                            <span class="skill-tag">Clinical Research</span>
+                            <span class="skill-tag">Statistical Analysis</span>
+                            <span class="skill-tag">Deep Brain Stimulation</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section id="education">
+                <div class="section-header">
+                    <span class="section-number">05.</span>
+                    <h2>Education</h2>
+                </div>
+                <div class="education-card">
+                    <h3 class="degree">PhD in Bioengineering</h3>
+                    <div class="institution">Villanova University</div>
+                    <div class="edu-meta">Research focused on neuroimaging and neuromodulation</div>
+                </div>
+                <div class="education-card">
+                    <h3 class="degree">Master's Degree in Bioengineering</h3>
+                    <div class="institution">Villanova University</div>
+                </div>
+                <div class="education-card">
+                    <h3 class="degree">Bachelor's Degree in Biomedical Engineering</h3>
+                    <div class="institution">Drexel University</div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p class="footer-text">© 2026 Jennifer J. Muller, PhD. Bridging software engineering and biomedical innovation.</p>
+        </footer>
+    </div>
+</body>
+</html>
